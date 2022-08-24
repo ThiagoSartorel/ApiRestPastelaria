@@ -1,0 +1,31 @@
+### Verbo GET – listar
+GET http://localhost:5000/cliente/2 HTTP/1.1
+
+### Verbo POST – adicionar
+POST http://127.0.0.1:5000/cliente/2 HTTP/1.1
+
+content-type: application/json
+{
+    "nome" : "cliente da Silva",
+    "cpf" : "08860888888",
+    "telefone" : "4999918466656",
+    "senha" : "clientinho",
+    "matricula" : "21354",
+    "grupo" : 1
+}
+
+### Verbo PUT – atualiza
+PUT http://127.0.0.1:5000/cliente/2 HTTP/1.1
+
+content-type: application/json
+{
+    "nome" : "Bolinhas dos clientes",
+    "cpf" : "21231233",
+    "telefone" : "12332323",
+    "senha" : "clii",
+    "matricula" : "123233",
+    "grupo" : 2
+}
+
+### Verbo DELETE - excluir
+DELETE http://127.0.0.1:5000/cliente/1 HTTP/1.1
