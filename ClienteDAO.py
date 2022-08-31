@@ -1,11 +1,30 @@
-from flask_restful import Resource
-# Criar os endpoints de Funcionario: GET, POST, PUT, DELETE
-class Cliente(Resource):
-    def get(self, id):
-        return {"msg": "get executado"}, 200
-    def post(self, id):
-        return {"msg": "post executado"}, 201
-    def put(self, id):
-        return {"msg": "put executado"}, 201
-    def delete(self, id):
-        return {"msg": "delete executado"}, 201
+from fastapi import APIRouter
+from pydantic import BaseModel
+
+router = APIRouter()
+
+class Cliente(BaseModel):
+    codigo: int = None
+    nome: str
+    cpf: str
+    telefone: str = None
+    compra_fiado: int
+    dia_fiado: int = None
+    senha: str = None
+
+# Criar os endpoints de cliente: GET, POST, PUT, DELETE
+@router.get("/cliente/{id}", tags=["cliente"])
+def get_funcionario(id: int):
+    return {"msg": "get executado", "id": id}, 200
+
+@router.post("/cliente/{id}", tags=["cliente"])
+def post_funcionario(id: int, f: Cliente):
+    return {"msg": "post executado", "id": id, "nome": f.nome, "cpf": f.cpf, "telefone": f.telefone}, 200
+
+@router.put("/cliente/{id}", tags=["cliente"])
+def put_funcionario(id: int, f: Cliente):
+    return {"msg": "put executado", "id": id, "nome": f.nome, "cpf": f.cpf, "telefone": f.telefone}, 201
+
+@router.delete("/cliente/{id}", tags=["cliente"])
+def delete_funcionario(id: int):
+    return {"msg": "delete executado", "id": id}, 201
