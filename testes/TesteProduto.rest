@@ -1,0 +1,26 @@
+### Verbo GET – listar
+GET http://localhost:8000/produto HTTP/1.1
+
+### Verbo POST - adicionar
+POST http://localhost:8000/produto HTTP/1.1
+content-type : application/json
+
+{
+    "nome" : "Thiago",
+    "descricao" : "asdasdasd",
+    "valor_unitario" : 15.5
+}
+
+### Verbo PUT - atualiza
+PUT http://127.0.0.1:8000/produto/1 HTTP/1.1
+content-type : application/json
+
+{
+    "nome" : "Sartorel",
+    "descricao" : "a",
+    "valor_unitario" : 17.5
+}
+
+### Verbo DELETE - atualiza
+DELETE  http://127.0.0.1:8000/produto/1 HTTP/1.1
+content-type : application/json
