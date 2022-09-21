@@ -19,8 +19,7 @@ class Funcionario(BaseModel):
     senha: str = None
 
 # Criar os endpoints de Funcionario: GET, POST, PUT, DELETE
-@router.get("/funcionario/", tags=["funcionario"],
-dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
+@router.get("/funcionario/", tags=["funcionario"])
 def get_funcionario():
     try:
         session = db.Session()
@@ -32,8 +31,7 @@ def get_funcionario():
     finally:
         session.close()
 
-@router.get("/funcionario/{id}", tags=["funcionario"],
-dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
+@router.get("/funcionario/{id}", tags=["funcionario"])
 def get_funcionario(id: int):
     try:
         session = db.Session()
@@ -45,8 +43,7 @@ def get_funcionario(id: int):
     finally:
         session.close()
 
-@router.post("/funcionario/", tags=["funcionario"],
-dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
+@router.post("/funcionario/", tags=["funcionario"])
 def post_funcionario(corpo: Funcionario):
     try:
         session = db.Session()
@@ -69,8 +66,7 @@ def post_funcionario(corpo: Funcionario):
     finally:
         session.close()
 
-@router.put("/funcionario/{id}", tags=["funcionario"],
-dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
+@router.put("/funcionario/{id}", tags=["funcionario"])
 def put_funcionario(id: int, corpo: Funcionario):
     try:
         session = db.Session()
@@ -95,8 +91,7 @@ def put_funcionario(id: int, corpo: Funcionario):
     finally:
         session.close()
 
-@router.delete("/funcionario/{id}", tags=["funcionario"],
-dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
+@router.delete("/funcionario/{id}", tags=["funcionario"])
 def delete_funcionario(id: int):
     try:
         session = db.Session()
