@@ -1,11 +1,12 @@
 import db
 from mod_produto.ProdutoModel import ProdutoDB
+from fastapi import Depends
+import security
 
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-router = APIRouter()
-
+router = APIRouter( dependencies=[Depends(security.verify_token), Depends(security.verify_key)] )
 
 class Produto(BaseModel):
     codigo: int = None
@@ -17,7 +18,8 @@ class Produto(BaseModel):
 # Criar os endpoints de produto: GET, POST, PUT, DELETE
 
 
-@router.get("/produto/", tags=["produto"])
+@router.get("/produto/", tags=["produto"],
+dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
 def get_produto():
     try:
         session = db.Session()
@@ -30,7 +32,8 @@ def get_produto():
         session.close()
 
 
-@router.get("/produto/{id}", tags=["produto"])
+@router.get("/produto/{id}", tags=["produto"],
+dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
 def get_produto(id: int):
     try:
         session = db.Session()
@@ -45,7 +48,8 @@ def get_produto(id: int):
         session.close()
 
 
-@router.post("/produto/", tags=["produto"])
+@router.post("/produto/", tags=["produto"],
+dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
 def post_produto(corpo: Produto):
     try:
         session = db.Session()
@@ -68,7 +72,8 @@ def post_produto(corpo: Produto):
         session.close()
 
 
-@router.put("/produto/{id}", tags=["produto"])
+@router.put("/produto/{id}", tags=["produto"],
+dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
 def put_produto(id: int, corpo: Produto):
     try:
         session = db.Session()
@@ -88,7 +93,8 @@ def put_produto(id: int, corpo: Produto):
         session.close()
 
 
-@router.delete("/produto/{id}", tags=["produto"])
+@router.delete("/produto/{id}", tags=["produto"],
+dependencies=[Depends(security.verify_token), Depends(security.verify_key)])
 def delete_produto(id: int):
     try:
         session = db.Session()
