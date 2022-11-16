@@ -17,10 +17,10 @@ x-token: abcBolinhasToken
 x-key: abcBolinhasKey
 
 {
-    "nome" : "Thiago",
-    "matricula" : "11111",
-    "cpf" : "22222",
-    "telefone" : "3333",
+    "nome" : "Carlos",
+    "matricula" : "2222",
+    "cpf" : "33333",
+    "telefone" : "4444",
     "grupo" : "4",
     "senha" : "55555"
 }
